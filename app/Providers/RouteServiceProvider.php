@@ -2,6 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Crew;
+use App\Models\Duty;
+use App\Models\Ship;
+use App\Models\Work;
+use App\Models\Route as RouteModel;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -47,6 +52,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
         });
+
+        Route::model('crew', Crew::class);
+        Route::model('work', Work::class);
+        Route::model('duty', Duty::class);
+        Route::model('ship', Ship::class);
+        Route::model('route', RouteModel::class);
     }
 
     /**
